@@ -1,0 +1,330 @@
+/* RESET & BASICS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0c0c0e;
+    color: #f4f4f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* CONTAINER RESPONSIVE */
+.container {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* HEADER */
+header {
+    padding-top: 24px;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    font-family: monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #a1a1aa;
+}
+
+.accent {
+    color: #10b981;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    background-color: #18181b;
+    border: 1px solid #27272a;
+    border-radius: 9999px;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: #d4d4d8;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* MAIN CONTENT RESPONSIVE */
+main {
+    padding: 32px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+@media (min-width: 640px) {
+    .profile-grid {
+        grid-template-columns: 240px 1fr;
+        justify-items: start;
+        text-align: left;
+        gap: 36px;
+    }
+}
+
+/* FOTO CON ENLACE (HOVER INVERTIDO) */
+.photo-link {
+    display: block;
+    position: relative;
+    width: min(220px, 60vw);
+    height: min(220px, 60vw);
+    margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+    .photo-link {
+        width: 240px;
+        height: 240px;
+        margin: 0;
+    }
+}
+
+.photo-frame {
+    position: absolute;
+    inset: -4px;
+    background-color: #10b981;
+    border-radius: 20px;
+    transform: rotate(-1.5deg);
+    transition: transform 0.3s ease;
+}
+
+.photo-link:hover .photo-frame {
+    transform: rotate(0deg);
+}
+
+.photo-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 2px solid #000;
+    background-color: #18181b;
+    filter: grayscale(0%); /* A color por defecto */
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover: Se pone en blanco y negro */
+.photo-link:hover .photo-img {
+    filter: grayscale(100%);
+    transform: scale(1.02);
+}
+
+/* TEXTO DE PRESENTACIÓN */
+.bio {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.bio h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+}
+
+.bio .subtitle {
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: rgba(16, 185, 129, 0.9);
+    display: block;
+    margin-top: 4px;
+}
+
+.bio p {
+    color: #a1a1aa;
+    font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+    max-width: 520px;
+}
+
+.btn-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: center;
+    padding: 12px 24px;
+    background-color: #10b981;
+    color: #000;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 4px;
+}
+
+@media (min-width: 640px) {
+    .btn-main {
+        align-self: flex-start;
+    }
+}
+
+.btn-main:hover {
+    background-color: #059669;
+    box-shadow: 0 0 20px -5px rgba(16, 185, 129, 0.4);
+}
+
+/* SECCIÓN DE CONTACTO RESPONSIVE */
+.contact-section {
+    margin-top: 48px;
+}
+
+.contact-title {
+    font-family: monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #71717a;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+@media (min-width: 540px) {
+    .links-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+}
+
+.card-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background-color: #141417;
+    border: 1px solid #27272a;
+    border-radius: 12px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.card-link:hover {
+    background-color: #18181b;
+    border-color: rgba(16, 185, 129, 0.5);
+}
+
+.card-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+}
+
+.card-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background-color: #18181b;
+    border: 1px solid #27272a;
+    color: #10b981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.card-link:hover .card-icon {
+    background-color: #10b981;
+    color: #000;
+}
+
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-text .label {
+    display: block;
+    font-family: monospace;
+    font-size: 0.65rem;
+    color: #71717a;
+}
+
+.card-text .value {
+    font-weight: 600;
+    color: #e4e4e7;
+    font-size: 0.95rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.arrow {
+    color: #52525b;
+    font-family: monospace;
+    transition: transform 0.2s ease, color 0.2s ease;
+    padding-left: 8px;
+}
+
+.card-link:hover .arrow {
+    color: #10b981;
+    transform: translateX(4px);
+}
+
+/* FOOTER RESPONSIVE */
+footer {
+    padding: 24px 0;
+    border-top: 1px solid #18181b;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: #52525b;
+}
+
+@media (min-width: 640px) {
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
