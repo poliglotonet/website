@@ -1,2 +1,1 @@
-# poliglotonet.github.io
-Personal landing page
+# Personal website
